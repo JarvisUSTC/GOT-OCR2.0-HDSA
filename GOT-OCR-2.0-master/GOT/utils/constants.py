@@ -22,18 +22,22 @@ DEFAULT_IM_END_TOKEN = '</img>'
 
 CONVERSATION_DATA = {
 
-    'data_1': {
-        'images': '/path/',
-        'annotations': '/path/data1.json',
+    'doclaynet_train_data': {
+        'images': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/',
+        'annotations': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/got_annotations/train_got_conversations.json',
     },
-    'data_2': {
-        'images': '/path/',
-        'annotations': '/path/data2.json',
+    'doclaynet_train_data_wo_others': {
+        'images': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/',
+        'annotations': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/got_annotations/train_got_conversations_wo_others.json',
     },
-    'data_3': {
-        'images': '/path/',
-        'annotations': '/path/data3.json',
-    },
+    # 'data_2': {
+    #     'images': '/path/',
+    #     'annotations': '/path/data2.json',
+    # },
+    # 'data_3': {
+    #     'images': '/path/',
+    #     'annotations': '/path/data3.json',
+    # },
 
 
 }

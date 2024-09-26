@@ -35,9 +35,11 @@ class ConversationDataset(BaseDataset):
 
         # TODO add your data  [data1, data2, data3, .....]
         got_data_dict = {
-            "pdf-ocr": ["data1", "data2"],
-            'scene-ocr': ["data3", "data4"]
-            # ......
+            "pod": ["doclaynet_train_data_wo_others"],
+            # "pod": ["doclaynet_train_data"],
+            # "pdf-ocr": ["data1", "data2"],
+            # 'scene-ocr': ["data3", "data4"]
+            # # ......
         }
         for name_all in datasets.split("+"):
             for name in got_data_dict[name_all]:

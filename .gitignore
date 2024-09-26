@@ -1,0 +1,103 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# macOS
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Local development logs
+*.log
+
+# pytest
+.cache/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# pylint
+pylint.log
+
+# Unit test / coverage results
+*.out
+*.err
+
+# Sphinx documentation
+docs/_build/
+
+# pipenv files
+Pipfile.lock
+
+# Build files
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+.Python
+*.manifest
+*.spec
+
+# PyInstaller
+# Usually these files are written by a python script from a template
+*.manifest
+*.spec
+
+# PEP 582; used by e.g. https://github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Profiling data
+.prof
+
+# Flask / Django stuff:
+instance/
+.webassets-cache
+*.sqlite3
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation:
+docs/_build/
+
+# PyBuilder
+target/
+
+# Wandb
+wandb/
+outputs/

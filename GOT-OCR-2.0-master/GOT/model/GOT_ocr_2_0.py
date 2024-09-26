@@ -129,7 +129,7 @@ class GOTQwenModel(Qwen2Model):
                 #     # image_features.append(cnn_feature)
                 # image_features_2.append(cnn_feature)
                 if P == 1:
-                    with torch.set_grad_enabled(False):
+                    with torch.set_grad_enabled(True):
                         # print(image[1].shape)
                         cnn_feature = vision_tower_high(image[1])
                         cnn_feature = cnn_feature.flatten(2).permute(0, 2, 1) # 256*1024
@@ -143,7 +143,7 @@ class GOTQwenModel(Qwen2Model):
                     image_patches_features = []
                     for image_patch in image_patches:
                         image_p = torch.stack([image_patch])
-                        with torch.set_grad_enabled(False):
+                        with torch.set_grad_enabled(True):
                             cnn_feature_p = vision_tower_high(image_p)
                             cnn_feature_p = cnn_feature_p.flatten(2).permute(0, 2, 1)
                         image_feature_p = self.mm_projector_vary(cnn_feature_p)

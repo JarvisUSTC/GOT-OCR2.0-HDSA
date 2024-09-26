@@ -72,6 +72,8 @@ def eval_model(args):
     
     if args.type == 'format':
         qs = 'OCR with format: '
+    elif args.type == 'pod':
+        qs = 'POD: '
     else:
         qs = 'OCR: '
 
@@ -145,6 +147,44 @@ def eval_model(args):
             stopping_criteria=[stopping_criteria]
             )
         
+        if args.type == 'pod':
+            print('==============pod===============')
+            outputs = tokenizer.decode(output_ids[0, input_ids.shape[1]:]).strip()
+            outputs_list = outputs.split('\n')
+            # visualize the bboxes and logical role in args.image_file: [117, 88, 328, 100] ['Section-header']
+            import cv2
+            image_viz = cv2.imread(args.image_file)
+            # for out in outputs_list[:-1]:
+            #     try:
+            #         bbox, logical_role = re.findall(r'\[(.*?)\]', out)
+            #     except:
+            #         continue
+            #     bbox = bbox.split(', ')
+            #     # bbox = [int(i) for i in bbox]
+            #     bbox = [int(i) / 1000 for i in bbox]
+            #     bbox = [int(bbox[0]*w), int(bbox[1]*h), int(bbox[2]*w), int(bbox[3]*h)]
+            #     if bbox[0] < 0 or bbox[1] < 0 or bbox[2] < 0 or bbox[3] < 0:
+            #         continue
+            #     logical_role = logical_role.replace('\'', '')
+            #     image_viz = cv2.rectangle(image_viz, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (0, 255, 0), 2)
+            logical_role2color = {"Section-header": (0, 255, 0), "Text": (0, 0, 255), "Table": (255, 0, 0), "Figure": (255, 255, 0), "Page-footer": (255, 0, 255), "Page-header": (0, 255, 255), "Formula": (255, 255, 255), "List-item": (165, 123, 132)}
+            for out in outputs_list:
+                try:
+                    bbox, logical_role = out.split('] ')
+                except:
+                    continue
+                bbox = bbox[1:].split(', ')
+                # bbox = [int(i) for i in bbox]
+                bbox = [int(i) / 1000 for i in bbox]
+                bbox = [int(bbox[0]*w), int(bbox[1]*h), int(bbox[2]*w), int(bbox[3]*h)]
+                if bbox[0] < 0 or bbox[1] < 0 or bbox[2] < 0 or bbox[3] < 0:
+                    continue
+                color = logical_role2color.get(logical_role, (0, 0, 0))
+                image_viz = cv2.rectangle(image_viz, (bbox[0], bbox[1]), (bbox[2], bbox[3]), color, 2)
+                image_viz = cv2.putText(image_viz, logical_role, (bbox[0], bbox[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+            os.makedirs(args.output, exist_ok=True)
+            cv2.imwrite(os.path.join(args.output, args.image_file.split('/')[-1]), image_viz)
+
 
         if args.render:
             print('==============rendering===============')
@@ -240,6 +280,7 @@ if __name__ == "__main__":
     parser.add_argument("--box", type=str, default= '')
     parser.add_argument("--color", type=str, default= '')
     parser.add_argument("--render", action='store_true')
+    parser.add_argument("--output", type=str, default='./results')
     args = parser.parse_args()
 
     eval_model(args)
