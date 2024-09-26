@@ -22,4 +22,4 @@ deepspeed   GOT-OCR-2.0-master/GOT/train/train_GOT.py \
  --num_train_epochs 3  \
  --learning_rate 2e-5   \
  --datasets pod \
- --output_dir /blob/workstation/LLM-Finetuning/GOT-OCR-2.0/POD-DocLayNet-wo-others-3e/ \
+ --output_dir /blob/workstation/LLM-Finetuning/GOT-OCR-2.0/POD-DocLayNet-wo-others-3e-unfreeze-backbone/ \

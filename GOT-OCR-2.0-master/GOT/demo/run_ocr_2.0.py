@@ -167,7 +167,7 @@ def eval_model(args):
             #         continue
             #     logical_role = logical_role.replace('\'', '')
             #     image_viz = cv2.rectangle(image_viz, (bbox[0], bbox[1]), (bbox[2], bbox[3]), (0, 255, 0), 2)
-            logical_role2color = {"Section-header": (0, 255, 0), "Text": (0, 0, 255), "Table": (255, 0, 0), "Figure": (255, 255, 0), "Page-footer": (255, 0, 255), "Page-header": (0, 255, 255), "Formula": (255, 255, 255), "List-item": (165, 123, 132)}
+            logical_role2color = {"Section-header": (0, 255, 0), "Text": (0, 0, 255), "Table": (255, 0, 0), "Figure": (255, 255, 0), "Page-footer": (255, 0, 255), "Page-header": (0, 255, 255), "Formula": (130, 255, 255), "List-item": (165, 123, 132)}
             for out in outputs_list:
                 try:
                     bbox, logical_role = out.split('] ')
