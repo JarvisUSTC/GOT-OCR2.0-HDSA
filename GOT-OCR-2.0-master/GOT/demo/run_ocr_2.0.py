@@ -74,6 +74,8 @@ def eval_model(args):
         qs = 'OCR with format: '
     elif args.type == 'pod':
         qs = 'POD: '
+    elif args.type == 'pod-ocr':
+        qs = 'POD and OCR: '
     else:
         qs = 'OCR: '
 
@@ -182,6 +184,33 @@ def eval_model(args):
                 color = logical_role2color.get(logical_role, (0, 0, 0))
                 image_viz = cv2.rectangle(image_viz, (bbox[0], bbox[1]), (bbox[2], bbox[3]), color, 2)
                 image_viz = cv2.putText(image_viz, logical_role, (bbox[0], bbox[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+            os.makedirs(args.output, exist_ok=True)
+            cv2.imwrite(os.path.join(args.output, args.image_file.split('/')[-1]), image_viz)
+        elif args.type == 'pod-ocr':
+            print('==============pod-ocr===============')
+            outputs = tokenizer.decode(output_ids[0, input_ids.shape[1]:]).strip()
+            outputs_list = outputs.split('\n')
+            # visualize the bboxes and logical role in args.image_file: [117, 88, 328, 100] ['Section-header']
+            import cv2
+            image_viz = cv2.imread(args.image_file)
+            logical_role2color = {"Section-header": (0, 255, 0), "Text": (0, 0, 255), "Table": (255, 0, 0), "Figure": (255, 255, 0), "Page-footer": (255, 0, 255), "Page-header": (0, 255, 255), "Formula": (130, 255, 255), "List-item": (165, 123, 132)}
+            for out in outputs_list:
+                try:
+                    out_1 = out.split(' <content>')[0]
+                    out_2 = out.split(' <content>')[1]
+                    bbox, logical_role = out_1.split('] ')
+                except:
+                    continue
+                bbox = bbox[1:].split(', ')
+                # bbox = [int(i) for i in bbox]
+                bbox = [int(i) / 1000 for i in bbox]
+                bbox = [int(bbox[0]*w), int(bbox[1]*h), int(bbox[2]*w), int(bbox[3]*h)]
+                if bbox[0] < 0 or bbox[1] < 0 or bbox[2] < 0 or bbox[3] < 0:
+                    continue
+                color = logical_role2color.get(logical_role, (0, 0, 0))
+                image_viz = cv2.rectangle(image_viz, (bbox[0], bbox[1]), (bbox[2], bbox[3]), color, 2)
+                image_viz = cv2.putText(image_viz, logical_role, (bbox[0], bbox[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+                image_viz = cv2.putText(image_viz, out_2[:5], (bbox[0], bbox[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
             os.makedirs(args.output, exist_ok=True)
             cv2.imwrite(os.path.join(args.output, args.image_file.split('/')[-1]), image_viz)
 
