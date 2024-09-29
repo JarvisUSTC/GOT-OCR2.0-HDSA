@@ -30,6 +30,10 @@ CONVERSATION_DATA = {
         'images': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/',
         'annotations': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/got_annotations/train_got_conversations_wo_others.json',
     },
+    'doclaynet_train_data_wo_others_pod_and_ocr': {
+        'images': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/',
+        'annotations': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/got_annotations/train_got_conversations_wo_others_pod_and_ocr.json',
+    },
     # 'data_2': {
     #     'images': '/path/',
     #     'annotations': '/path/data2.json',

@@ -1,0 +1,2 @@
+python GOT-OCR-2.0-master/GOT/eval/eval_GOT_pod.py --model-name outputs/POD-DocLayNet-wo-others-3e-unfreeze-backbone --image_path datasets/DocLayNet/val --out_path local_outputs/POD-DocLayNet-wo-others-3e-unfreeze-backbone/eval/ 
+# python GOT-OCR-2.0-master/GOT/eval/eval_GOT_pod.py --model-name outputs/POD-DocLayNet-wo-others-3e-unfreeze-backbone --image_path datasets/DocLayNet/val --out_path outputs/POD-DocLayNet-wo-others-3e-unfreeze-backbone/eval/ --demo

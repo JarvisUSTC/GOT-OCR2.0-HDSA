@@ -36,6 +36,7 @@ class ConversationDataset(BaseDataset):
         # TODO add your data  [data1, data2, data3, .....]
         got_data_dict = {
             "pod": ["doclaynet_train_data_wo_others"],
+            "pod-ocr": ["doclaynet_train_data_wo_others_pod_and_ocr"],
             # "pod": ["doclaynet_train_data"],
             # "pdf-ocr": ["data1", "data2"],
             # 'scene-ocr': ["data3", "data4"]
