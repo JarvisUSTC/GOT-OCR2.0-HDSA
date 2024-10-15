@@ -23,16 +23,16 @@ DEFAULT_IM_END_TOKEN = '</img>'
 CONVERSATION_DATA = {
 
     'doclaynet_train_data': {
-        'images': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/',
-        'annotations': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/got_annotations/train_got_conversations.json',
+        'images': '/blob/data/DocLayNet/',
+        'annotations': '/blob/data/DocLayNet/got_annotations/train_got_conversations.json',
     },
     'doclaynet_train_data_wo_others': {
-        'images': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/',
-        'annotations': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/got_annotations/train_got_conversations_wo_others.json',
+        'images': '/blob/data/DocLayNet/',
+        'annotations': '/blob/data/DocLayNet/got_annotations/train_got_conversations_wo_others.json',
     },
     'doclaynet_train_data_wo_others_pod_and_ocr': {
-        'images': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/',
-        'annotations': '/home/t-jiaweiwang/Project/GOT-OCR2.0/datasets/DocLayNet/got_annotations/train_got_conversations_wo_others_pod_and_ocr.json',
+        'images': '/blob/data/DocLayNet/',
+        'annotations': '/blob/data/DocLayNet/got_annotations/train_got_conversations_wo_others_pod_and_ocr.json',
     },
     # 'data_2': {
     #     'images': '/path/',

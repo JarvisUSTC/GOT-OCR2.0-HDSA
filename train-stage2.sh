@@ -1,4 +1,6 @@
 export WANDB_API_KEY="d8d48d5c16ca9b51769d812605aed1929aca30e1"
+export WANDB_PROJECT="OCR2.0"
+export WANDB_JOB_NAME="POD-DocLayNet-wo-others-3e-unfreeze-backbone-stage2-pod-ocr-2"
 
 deepspeed   GOT-OCR-2.0-master/GOT/train/train_GOT.py \
  --deepspeed GOT-OCR-2.0-master/zero_config/zero2.json    --model_name_or_path outputs/POD-DocLayNet-wo-others-3e-unfreeze-backbone \

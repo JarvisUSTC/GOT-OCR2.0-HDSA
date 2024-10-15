@@ -210,7 +210,7 @@ def eval_model(args):
                 color = logical_role2color.get(logical_role, (0, 0, 0))
                 image_viz = cv2.rectangle(image_viz, (bbox[0], bbox[1]), (bbox[2], bbox[3]), color, 2)
                 image_viz = cv2.putText(image_viz, logical_role, (bbox[0], bbox[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-                image_viz = cv2.putText(image_viz, out_2[:5], (bbox[0], bbox[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+                # image_viz = cv2.putText(image_viz, out_2[:5], (bbox[0], bbox[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
             os.makedirs(args.output, exist_ok=True)
             cv2.imwrite(os.path.join(args.output, args.image_file.split('/')[-1]), image_viz)
 
